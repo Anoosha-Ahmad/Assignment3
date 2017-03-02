@@ -25,7 +25,7 @@ public class A2Q4 {
         City castle =new City();
         
         //create a robot
-        Robot R = new Robot(castle, 0, 0, Direction.EAST); 
+        Robot rob = new Robot(castle, 0, 0, Direction.EAST); 
         
         //create the castle (walls)
         new Wall(castle, 1, 1, Direction.WEST);
@@ -61,24 +61,24 @@ public class A2Q4 {
         //loop
         while(true){
             //move around 1/4 of the castle (loop-repeated)
-            R.move();
-            R.move();
-            R.turnLeft();
-            R.turnLeft();
-            R.turnLeft();
-            R.move();
-            R.turnLeft();
-            R.move();
-            R.turnLeft();
-            R.move();
-            R.turnLeft();
-            R.turnLeft();
-            R.turnLeft();
-            R.move();
-            R.move();
-            R.turnLeft();
-            R.turnLeft();
-            R.turnLeft();
+            rob.move();
+            rob.move();
+            rob.turnLeft();
+            rob.turnLeft();
+            rob.turnLeft();
+            rob.move();
+            rob.turnLeft();
+            rob.move();
+            rob.turnLeft();
+            rob.move();
+            rob.turnLeft();
+            rob.turnLeft();
+            rob.turnLeft();
+            rob.move();
+            rob.move();
+            rob.turnLeft();
+            rob.turnLeft();
+            rob.turnLeft();
                                
             }
             

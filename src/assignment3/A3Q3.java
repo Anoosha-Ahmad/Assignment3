@@ -60,6 +60,7 @@ public class A3Q3 {
             while (rob.canPickThing()) {
                 rob.pickAllThings();
             }
+            //move to next street 
             while (rob.getAvenue() == 1) {
                 rob.turnLeft();
                 rob.move();
@@ -68,10 +69,7 @@ public class A3Q3 {
                 rob.move();
             }
 
-
-
             //turn arouund 
-
             while (!rob.frontIsClear() == true) {
                 rob.turnAround();
 
@@ -85,21 +83,17 @@ public class A3Q3 {
 
             }
         }
-        if (rob.frontIsClear() == true) {
+        //rob moves back to it's original position after picking up all things
+        while (rob.frontIsClear() == true) {
             rob.move();
-            
-            rob.turnLeft();
+            if (!rob.frontIsClear() == true) {
+                rob.turnLeft();
+                if (rob.getStreet() == 1 && rob.getAvenue() == 1) {
+                    rob.turnLeft();
+                    break;
+                }
 
-
-
-
-
-
-
-
-
-
-
+            }
 
         }
     }

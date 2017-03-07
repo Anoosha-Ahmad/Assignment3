@@ -6,8 +6,6 @@ package assignment3;
 
 import becker.robots.City;
 import becker.robots.Direction;
-import becker.robots.IPredicate;
-import becker.robots.Robot;
 import becker.robots.RobotSE;
 import becker.robots.Wall;
 
@@ -21,11 +19,11 @@ public class A3Q4 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here\
+        // TODO code application logic here
         // create new city
         City kw = new City();
         // create a robot
-        RobotSE rob = new RobotSE(kw, 3, 1, Direction.SOUTH);
+        RobotSE rob = new RobotSE(kw, 2, 2, Direction.SOUTH);
         //create rectangular room with walls
         new Wall(kw, 1, 1, Direction.WEST);
         new Wall(kw, 2, 1, Direction.WEST);
@@ -39,45 +37,33 @@ public class A3Q4 {
         new Wall(kw, 1, 4, Direction.EAST);
         new Wall(kw, 1, 1, Direction.NORTH);
         new Wall(kw, 1, 2, Direction.NORTH);
-
         new Wall(kw, 1, 4, Direction.NORTH);
 
-        //loop
+        // move close to the wall
+        rob.move();
+
+        // loop
         while (true) {
-            //
 
-            while (rob.isFacingSouth() && rob.frontIsClear() == true) {
-                rob.move();
-                if (!rob.frontIsClear() == true) {
-                    rob.turnLeft();
+            // check all walls to see if there are exits 
+            // if way is clear turn right
+            if (rob.frontIsClear() == true) {
+                rob.turnRight();
+
+                // if way is clear (when robot finds exit), move through exit and stop
+                if (rob.frontIsClear() == true) {
                     rob.move();
-                    rob.turnLeft();
-
+                    break;
                 }
 
-            }
-            while (rob.isFacingNorth() && rob.frontIsClear() == true) {
+                // if way is not clear, move on to check the next wall
+            } else if (!(rob.frontIsClear() == true)) {
+                rob.turnLeft();
                 rob.move();
-            
-                    while (rob.getStreet() == 0 && rob.getAvenue() == 3)
-                       
-                
 
-                if (!rob.frontIsClear() == true) {
-                    rob.turnRight();
-                    rob.move();
-                    rob.turnRight();
-                }
             }
-
-            if (!rob.frontIsClear() == true) {
-                rob.turnAround();
-               
-            }
-              
-            }
-
         }
 
     }
 
+}

@@ -60,7 +60,7 @@ public class A3Q4 {
                 rob.move();
             
                     while (rob.getStreet() == 0 && rob.getAvenue() == 3)
-                        break;
+                       
                 
 
                 if (!rob.frontIsClear() == true) {
@@ -72,6 +72,7 @@ public class A3Q4 {
 
             if (!rob.frontIsClear() == true) {
                 rob.turnAround();
+               
             }
               
             }

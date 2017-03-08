@@ -45,31 +45,50 @@ public class A3Q6 {
         new Thing(major, 4, 1);
         new Thing(major, 4, 1);
 
-        // pick and move things
-        while (true) {
-            mae.move();
+        // robot moves to the first group of items
+        int counter = 0;
+        mae.move();
+        
+        // robot picks all things
+        while (mae.canPickThing()){
+            if (mae.canPickThing()) {
             mae.pickAllThings();
+            counter ++;
+            }
+            // turn left after picking things
+            counter = mae.countThingsInBackpack();
             mae.turnLeft();
-
-            int counter = 0;
-            counter = counter++;
-            for (int i = 1; i < 4; i = i + 1) {
-
+            
+            //when you put things, move one space
+            for (int i = 0; i < counter; i++){
                 mae.putThing();
                 mae.move();
+                
+            }
+            // turn around
+            mae.turnAround();
+            for (int i = 0; i < counter ;){
+                mae.move();
+                counter--;
+            }
+            mae.turnLeft();
+            mae.move();
+                       
+        }
+      
+        
+        
+                
+                
 
             }
 
 
 
-            counter = counter--;
-
-            mae.turnAround();
-            mae.move();
+           
 
 
-
-
-        }
     }
-}
+        
+    
+

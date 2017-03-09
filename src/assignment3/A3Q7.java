@@ -69,30 +69,32 @@ public class A3Q7 {
         new Wall(squared, 5, 5, Direction.SOUTH);
 
         // loop
-        while (true) {
+      
             // 
-            for (int i = 1; i < 4; i = i + 1) {
+            for (int i = 0; i < 4; i = i + 1) {
                 int counter = 0;
-                if (counter < 4) {
+                while (counter < 4) {
                     red.move();
                     red.move();
                     red.move();
-                    red.turnLeft();
-                    
-                    if (counter > 5){
-                    
-                    red.move();
-                    
-                } 
                     
                     
+                    if (counter < 3){
+                        red.turnLeft();
+                    
+                    }
+                    
+                 
+                    
+                   counter = counter + 1; 
+                }
                 }
 
             }
-            red.move();
+           
             
 
         }
 
-    }
-}
+    
+

@@ -23,8 +23,10 @@ public class A3Q3 {
         // TODO code application logic here
         //create new city
         City house = new City();
+
         //create a new robot 
-        RobotSE rob = new RobotSE(house, 1, 1, Direction.EAST);
+        RobotSE lisa = new RobotSE(house, 1, 1, Direction.EAST);
+
         // create litter (things)
         new Thing(house, 1, 2);
         new Thing(house, 2, 2);
@@ -32,6 +34,7 @@ public class A3Q3 {
         new Thing(house, 3, 1);
         new Thing(house, 3, 4);
         new Thing(house, 2, 4);
+
         // create the walls for the room
         new Wall(house, 1, 1, Direction.NORTH);
         new Wall(house, 1, 2, Direction.NORTH);
@@ -47,49 +50,52 @@ public class A3Q3 {
         new Wall(house, 1, 4, Direction.EAST);
         new Wall(house, 2, 4, Direction.EAST);
         new Wall(house, 3, 4, Direction.EAST);
+
         //loop 
         while (true) {
-            //if robots front is clear move and pick all things in way
+            //if robots front is clear ---> move and pick all things in way
             // move if clear
-            while (rob.frontIsClear() == true) {
-                rob.pickAllThings();
-                rob.move();
+            while (lisa.frontIsClear() == true) {
+                lisa.pickAllThings();
+                lisa.move();
             }
 
             // pick all things in way
-            while (rob.canPickThing()) {
-                rob.pickAllThings();
-            }
-            //move to next street 
-            while (rob.getAvenue() == 1) {
-                rob.turnLeft();
-                rob.move();
-                rob.turnLeft();
-                rob.pickAllThings();
-                rob.move();
+            while (lisa.canPickThing()) {
+                lisa.pickAllThings();
             }
 
-            //turn arouund 
-            while (!rob.frontIsClear() == true) {
-                rob.turnAround();
+            // when robot is on avenue 1, move to the next street 
+            while (lisa.getAvenue() == 1) {
+                lisa.pickAllThings();
+                lisa.turnLeft();
+                lisa.move();
+            }
+
+            //when front isn't clear ---> turn arouund 
+            while (!lisa.frontIsClear() == true) {
+                lisa.turnAround();
 
             }
-            // move to next street
 
-            if (rob.getStreet() == 3 && rob.getAvenue() == 4) {
-                rob.turnRight();
+            //rob faces North to return back to its original position after picking up all things
+            if (lisa.getStreet() == 3 && lisa.getAvenue() == 4) {
+                lisa.turnRight();
 
                 break;
 
             }
         }
-        //rob moves back to it's original position after picking up all things
-        while (rob.frontIsClear() == true) {
-            rob.move();
-            if (!rob.frontIsClear() == true) {
-                rob.turnLeft();
-                if (rob.getStreet() == 1 && rob.getAvenue() == 1) {
-                    rob.turnLeft();
+        //rob moves back to its original position after picking up all things
+        // while front is clear ---> move
+        while (lisa.frontIsClear() == true) {
+            lisa.move();
+            // while front isn't clear ---> turn left
+            if (!lisa.frontIsClear() == true) {
+                lisa.turnLeft();
+                // when rob arrives at original spot & posistion--> stop
+                if (lisa.getStreet() == 1 && lisa.getAvenue() == 1) {
+                    lisa.turnLeft();
                     break;
                 }
 

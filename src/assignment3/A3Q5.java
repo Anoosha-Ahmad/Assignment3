@@ -7,7 +7,6 @@ package assignment3;
 
 import becker.robots.City;
 import becker.robots.Direction;
-import becker.robots.Robot;
 import becker.robots.RobotSE;
 import becker.robots.Thing;
 
@@ -42,30 +41,18 @@ public class A3Q5 {
         //loop
 
         //specify the variable
-        for (int i = 0; i < 10; i = i + 0) {
-            while (true) {
-                while (wanda.canPickThing() == true) {
-                    wanda.pickThing();
-                    wanda.move();
-                    if (wanda.getAvenue()== 1){
-                        break;
-                    }
-                    
-                    
-                }
-                while (wanda.getAvenue()== 2){
-                    wanda.putThing();
-                    wanda.turnAround();
-                    wanda.move();
-                    break;
-                    
-                }
-                
-
-            }
+        for (int i = 0; i < 10; i = i + 1) {
+            // move one object to the sent avenue 10 times
+            wanda.pickThing();
+            wanda.move();
+            wanda.putThing();
+            wanda.turnAround();
+            wanda.move();
+            wanda.turnAround();
 
         }
-
+        // move to the next avenue where there are all 10 things (that have been moved)
+        wanda.move();
     }
 
 }

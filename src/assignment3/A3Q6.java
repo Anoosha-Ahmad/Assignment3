@@ -49,28 +49,34 @@ public class A3Q6 {
         int counter = 0;
         mae.move();
 
+        // pick up objects until there are no more to pick up
         // robot picks all things
         while (mae.canPickThing()) {
             if (mae.canPickThing()) {
                 mae.pickAllThings();
-                counter++;
+
             }
+
             // turn left after picking things
             counter = mae.countThingsInBackpack();
             mae.turnLeft();
 
-            //when you put things, move one space
+            //put things----> one thing each on the avenue in front of the robot 
             for (int i = 0; i < counter; i++) {
                 mae.putThing();
                 mae.move();
 
             }
-            // turn around
+
+            // turn robot around back to Avenue 1 
             mae.turnAround();
             for (int i = 0; i < counter;) {
                 mae.move();
                 counter--;
+
             }
+
+            // move robot to next street after putting all things as instructed
             mae.turnLeft();
             mae.move();
 

@@ -20,10 +20,13 @@ public class A3Q4 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+
         // create new city
         City kw = new City();
+
         // create a robot
-        RobotSE rob = new RobotSE(kw, 2, 2, Direction.SOUTH);
+        RobotSE tom = new RobotSE(kw, 2, 2, Direction.SOUTH);
+
         //create rectangular room with walls
         new Wall(kw, 1, 1, Direction.WEST);
         new Wall(kw, 2, 1, Direction.WEST);
@@ -40,26 +43,26 @@ public class A3Q4 {
         new Wall(kw, 1, 4, Direction.NORTH);
 
         // move close to the wall
-        rob.move();
+        tom.move();
 
         // loop
         while (true) {
 
             // check all walls to see if there are exits 
-            // if way is clear turn right
-            if (rob.frontIsClear() == true) {
-                rob.turnRight();
+            // if front is clear turn right
+            if (tom.frontIsClear() == true) {
+                tom.turnRight();
 
-                // if way is clear (when robot finds exit), move through exit and stop
-                if (rob.frontIsClear() == true) {
-                    rob.move();
+                // if path is clear (when robot finds exit), move through exit and stop
+                if (tom.frontIsClear() == true) {
+                    tom.move();
                     break;
                 }
 
                 // if way is not clear, move on to check the next wall
-            } else if (!(rob.frontIsClear() == true)) {
-                rob.turnLeft();
-                rob.move();
+            } else if (!(tom.frontIsClear() == true)) {
+                tom.turnLeft();
+                tom.move();
 
             }
         }

@@ -23,10 +23,12 @@ public class A3Q1 {
         // TODO code application logic here
         // create a city
         City kw = new City();
-        //create a robots, one for each situation 
+
+        //create a robots, one for each situation
         Robot karel = new Robot(kw, 0, 0, Direction.EAST);
         Robot aries = new Robot(kw, 1, 0, Direction.EAST);
-        // create the walls, one for each situation 
+
+        // create the walls, one for each situation
         new Wall(kw, 0, 4, Direction.WEST);
         new Wall(kw, 1, 4, Direction.EAST);
 
@@ -34,29 +36,26 @@ public class A3Q1 {
         new Thing(kw, 0, 2);
         new Thing(kw, 0, 3);
 
-        // thing for siuation 2 
+        // thing for siuation 2
         new Thing(kw, 1, 5);
 
-        // first situation: using a for loop to count <-- to stop at the object
+        // first situation: using a for loop <-- to stop at the first object
         for (int i = 0; i < 2; i = i + 1) {
             karel.move();
         }
+
         // second situation
-        if(aries.frontIsClear()) {
-            //do something
-            int counter = 0;
+        // if front if clear move
+        if (aries.frontIsClear()) {
+
             // move 4 times
             for (int i = 0; i < 4; i = i + 1) {
-                // move         
                 aries.move();
-                                   
-                }
-                
-            
-            }
-                    
-        } 
 
+            }
+
+        }
 
     }
 
+}

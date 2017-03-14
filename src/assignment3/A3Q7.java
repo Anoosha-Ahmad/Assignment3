@@ -69,32 +69,27 @@ public class A3Q7 {
         new Wall(squared, 5, 5, Direction.SOUTH);
 
         // loop
-      
-            // 
-            for (int i = 0; i < 4; i = i + 1) {
-                int counter = 0;
-                while (counter < 4) {
-                    red.move();
-                    red.move();
-                    red.move();
-                    
-                    
-                    if (counter < 3){
-                        red.turnLeft();
-                    
-                    }
-                    
-                 
-                    
-                   counter = counter + 1; 
-                }
-                }
-
-            }
-           
+        // specify the variable --> repeat loop 4 times 
+        for (int i = 0; i < 4; i = i + 1) {
+            int counter = 0;
             
+            // move three times, when counter is less than 4
+            while (counter < 4) {
+                red.move();
+                red.move();
+                red.move();
 
+                // turn left when counter is less than 3 times
+                if (counter < 3) {
+                    red.turnLeft();
+
+                }
+
+                // move robot to next square to loop around
+                counter = counter + 1;
+            }
         }
 
-    
+    }
 
+}
